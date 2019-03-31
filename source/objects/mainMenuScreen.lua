@@ -4,19 +4,18 @@ mainMenuScreen = {
   currentOption = 1,
   options = {
     [1] = { 
-      text = "Time Attack",
-      description = "Beat the record on various tracks to unlock new cars",
+      text = "Empezar",
+      description = "00:05:57",
       accessible = true,
       x = love.graphics.getWidth()/2-60,
       y = love.graphics.getHeight()/2,
       changeState = function ()
-        state = gameStates.mapSelect
-        mode = gameModes.timeAttack
+        
       end
     },
     [2] = {
-      text = "Settings",
-      description = "Adjust the game to your liking",
+      text = "Ajustes",
+      description = "Ajusta el juego a tu gustirrico",
       accessible = true,
       x = love.graphics.getWidth()/2-60,
       y = love.graphics.getHeight()/2+60,

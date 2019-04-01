@@ -3,6 +3,7 @@ Object = require "libs/classic"
 require "objects/audio-engine"
 require "objects/gamestates"
 require "objects/config"
+require "objects/clock"
 require "objects/mainMenuScreen"
 function love.load()
   cheat = ""

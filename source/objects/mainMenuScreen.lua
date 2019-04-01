@@ -2,6 +2,7 @@ mainMenuScreen = {
   bigFont = love.graphics.newFont(30),
   defaultFont = love.graphics.newFont(18),
   currentOption = 1,
+  testclock = Clock(0,0),
   options = {
     [1] = { 
       text = "Empezar",
@@ -26,7 +27,7 @@ mainMenuScreen = {
   }
 }
 mainMenuScreen.update = function (self,dt)
-  
+  self.testclock:update(dt)
 end
 mainMenuScreen.draw = function (self)
   love.graphics.setColor(223/255,113/255,38/255,1)
@@ -42,6 +43,7 @@ mainMenuScreen.draw = function (self)
     end
     love.graphics.setFont(self.bigFont)
     love.graphics.print(v.text,v.x,v.y)
+    self.testclock:draw()
     love.graphics.setFont(self.defaultFont)
   end
   love.graphics.setColor(1,1,1,1)

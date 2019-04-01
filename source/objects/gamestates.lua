@@ -4,6 +4,7 @@ gameStates.mainMenu = {
     changeOptionUp = function() mainMenuScreen:changeOption(-1) end,
     changeOptionDown = function() mainMenuScreen:changeOption(1) end,
     selectOption = function() mainMenuScreen:selectOption() end,
+    addSecond = function()mainMenuScreen.testclock:addSeconds(3600) end,
     quit       = function() love.event.quit() end,
   },
   keys = {
@@ -11,6 +12,7 @@ gameStates.mainMenu = {
     up         = "changeOptionUp",
     down       = "changeOptionDown",
     ["return"] = "selectOption",
+    ["+"]          = "addSecond",
     escape = "quit"
   },
   keysReleased ={

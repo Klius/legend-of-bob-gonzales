@@ -10,6 +10,7 @@ function Map:new()
     [4] = Mapbutton(294,120,"Mendez","assets/mendez.png","upper"),
     [5] = Mapbutton(404,70,"Bocanord","assets/boca.png","upper"),
   }
+  self.currentPlace = 1
 end
 function Map:draw()
   love.graphics.draw(self.background,self.x,self.y)

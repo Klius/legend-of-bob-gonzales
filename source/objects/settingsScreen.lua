@@ -4,10 +4,10 @@ settingsScreen = {
   currentOption = 1,
   options = {
     [1] = {
-      text = "Music Volume",
+      text = "Musica",
       x=100,
       y=300,
-      description = "Beat the record on various tracks to unlock new cars",
+      description = "",
       accessible = true,
       isAudioControl= true,
       volControl = audioControl(),
@@ -21,10 +21,10 @@ settingsScreen = {
       end
     },
     [2] = {
-      text = "SFX Volume",
+      text = "Efectos",
       x=100,
       y=400,
-      description = "Beat the record on various tracks to unlock new cars",
+      description = "",
       accessible = true,
       isAudioControl = true,
       volControl = audioControl(),
@@ -38,31 +38,13 @@ settingsScreen = {
       end
     },
     [3] = {
-      text = "Camera",
-      x=100,
-      y=500,
-      description = "Changes Camera behaviour",
-      accessible = true,
-      isSelectorControl = true,
-      control = selectorControl({ [1]={text="Dinamic",value=1} , [2]={text="Static",value=0}},config.dinamic_cam),
-      changeOption = function (control,increment)
-        control:changeOption(increment)
-        config.dinamic_cam = control:getValue()
-      end,
-      draw = function(self)
-        love.graphics.print(self.text,self.x,self.y)
-        self.control:draw(self.x+120,self.y)
-      end
-    },
-    [4] = {
-      text = "Back",
+      text = "Atrás",
       x=100,
       y=600,
-      description = "Beat the record on various tracks to unlock new cars",
+      description = "",
       accessible = true,
       changeState = function ()
         saveConf(config)
-        defTransition:start()
         state = gameStates.mainMenu
       end
     }

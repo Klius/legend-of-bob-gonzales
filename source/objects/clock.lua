@@ -20,6 +20,7 @@ function Clock:draw()
   love.graphics.setColor(0,0,0,1)
   love.graphics.print(self.timeString,self.x+27,self.y+50)
   love.graphics.setColor(255/255,255/255,255/255,1)
+  love.graphics.setFont(love.graphics.newFont(18))
 end
 function Clock:update(dt)
   if self.addedSeconds > 0 then

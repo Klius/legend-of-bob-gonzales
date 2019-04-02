@@ -27,7 +27,29 @@ gameStates.mainMenu = {
   buttonsReleased = {
   }
 }
-
+gameStates.gameLoop = {
+  bindings = {
+    goBack = function()  end,
+    moveUp = function()  end,
+    moveDown = function()  end,
+    assignControllers = function()  end,
+  },
+  keys = {
+    space     = "assignControllers",
+    ["return"] = "assignControllers",
+    up = "moveUp",
+    down = "moveDown", 
+    escape = "goBack"
+  },
+  keysReleased = {},
+  buttons = {
+    dpup = "moveUp",
+    dpdown = "moveDown",
+    a = "assignControllers",
+    start = "assignControllers"
+  },
+  buttonsReleased = {}
+}
 gameStates.dummy = {
   bindings = {
     goBack = function() state = gameStates.mainMenu end,

@@ -1,6 +1,6 @@
 function getAnimations(sprite,width,height)
   local spritesheet = {}
-  local i = 0
+  local i = 1
   local y = 0
   local x = 0
   while x < sprite:getWidth() do

@@ -1,13 +1,21 @@
 --moonshine = require "libs/moonshine"
 Object = require "libs/classic"
+require "objects/animations"
 require "objects/audio-engine"
 require "objects/gamestates"
 require "objects/config"
 require "objects/clock"
+require "objects/mapbutton"
+require "objects/button"
+require "objects/map"
+require "objects/game"
+require "objects/audioControl"
 require "objects/mainMenuScreen"
+require "objects/settingsScreen"
 function love.load()
   cheat = ""
   state = gameStates.mainMenu
+  game = Game()
   --play music
   audiomanager = Audio(config.music,config.sfx)
 end
@@ -17,6 +25,9 @@ function love.update(dt)
     if state == gameStates.mainMenu then
       mainMenuScreen:update(dt)
     end
+    if state == gameStates.gameLoop then
+      game:update(dt)
+    end
     if state == gameStates.settingsScreen then
       settingsScreen:update(dt)
     end
@@ -24,8 +35,9 @@ end
 
 function love.draw()
   --if defTransition.started == false then
+    
     if state == gameStates.gameLoop then
-      
+      game:draw()
     elseif state == gameStates.mainMenu then
       mainMenuScreen:draw()
     elseif state == gameStates.settingsScreen  then
@@ -35,9 +47,7 @@ function love.draw()
       controllerScreen:draw(dt)
     end
   --end
-  if debug then
-        love.graphics.print ("FPS:"..love.timer.getFPS(),640,0)
-  end
+  love.graphics.print(cheat,0,0)
 end
 
 
@@ -155,6 +165,10 @@ function love.gamepadaxis( gamepad, axis, value )
     binding = state.buttonsReleased[button2]
     inputHandler( binding, gamepad:getGUID() )
   end
-
-  --[[se ha de pasar axis i value ]]
 end
+  function love.mousepressed(x,y,button,istouch,presses)
+    if state == gameStates.mainMenu then
+      mainMenuScreen:checkMouseClick(x,y,button)
+    end
+    cheat = "x:"..x.." y:"..y
+  end

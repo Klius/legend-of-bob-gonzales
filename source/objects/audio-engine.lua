@@ -2,7 +2,7 @@ Audio = Object:extend()
 
 function Audio:new(musVolume,sfxVolume)
   self.audios = {
-    menu = "assets/audio/mus/dummy.mp3",
+    menu = "assets/audio/mus/bobtheme.ogg",
     race = {
       [1] = "assets/audio/copafeel.mp3",
       [2] = "assets/audio/feelgoodrock.mp3",

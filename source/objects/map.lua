@@ -19,5 +19,7 @@ function Map:draw()
   end
 end
 function Map:update(dt)
-
+  for i=1,#self.places,1 do
+    self.places[i]:update(dt)
+  end
 end

@@ -8,6 +8,7 @@ require "objects/clock"
 require "objects/mapbutton"
 require "objects/button"
 require "objects/map"
+require "objects/place"
 require "objects/game"
 require "objects/audioControl"
 require "objects/mainMenuScreen"
@@ -169,6 +170,8 @@ end
   function love.mousepressed(x,y,button,istouch,presses)
     if state == gameStates.mainMenu then
       mainMenuScreen:checkMouseClick(x,y,button)
+    elseif state == gameStates.gameLoop then
+      game:checkMouseClick(x,y,button)
     end
     cheat = "x:"..x.." y:"..y
   end

@@ -1,14 +1,15 @@
 Clock = Object:extend()
 
-function Clock:new(x,y)
+function Clock:new(x,y,hours,minutes,seconds)
   self.font = love.graphics.newFont("assets/fonts/alarmclock.ttf",18)
   self.x = x or 0
   self.y = y or 0
   self.addedSeconds = 0
-  self.seconds = 0
-  self.minutes = 0
-  self.hours = 0
+  self.seconds = seconds or 0
+  self.minutes = minutes or 0
+  self.hours = hours or 0
   self.timeString = "00:00:00"
+  self:timeToString()
   self.back = love.graphics.newImage("assets/clock.png")
 end
 
@@ -24,8 +25,8 @@ function Clock:draw()
 end
 function Clock:update(dt)
   if self.addedSeconds > 0 then
-    self.addedSeconds = self.addedSeconds -1
-    self.seconds = self.seconds+1
+    self.addedSeconds = self.addedSeconds -10
+    self.seconds = self.seconds+10
     self:updateTime()
   end
 end

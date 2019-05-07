@@ -1,6 +1,7 @@
 Place = Object:extend()
 
 function Place:new()
+  self.id = id or "casa"
   self.backImage= img or love.graphics.newImage("assets/home-interior.png")
   self.x = 0
   self.y = 0
@@ -20,6 +21,7 @@ function Place:new()
       [1] ="",
       [2] =function()
         game.clock:addSeconds(60*5)
+        game.flags.ducha = true
       end,
       [3] = function()
         game.currentState = game.states.map

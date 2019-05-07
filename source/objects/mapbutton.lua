@@ -1,6 +1,6 @@
 Mapbutton = Object:extend()
 
-function Mapbutton:new(x,y,text,img,dir,action)
+function Mapbutton:new(x,y,text,img,dir,action,placeId)
   self.x = x or 0
   self.width = w or 64
   self.height = h or 64
@@ -10,10 +10,11 @@ function Mapbutton:new(x,y,text,img,dir,action)
   self.frames = getAnimations(self.backImage,self.width,self.height)
   self.isPressed = false
   self.isSwitch = false
+  self.placeId = placeId or "casa"
   self.hover = false
   self.text = text or "??????"
   self.pressCounter = 0
-  self.action = action or function () print("action") end
+  self.action = action or function () game:moveToPlace(self.placeId) end
   self.inaction = function() print("inaction") end
 end
 

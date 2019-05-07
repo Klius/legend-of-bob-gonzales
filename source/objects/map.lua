@@ -23,3 +23,14 @@ function Map:update(dt)
     self.places[i]:update(dt)
   end
 end
+function Map:checkMouseClick(x,y,button)
+  for i=#self.places,1,-1 do
+      if x >self.places[i].x and
+        x < self.places[i].x+self.places[i].width and
+        y > self.places[i].y and
+        y < self.places[i].y+self.places[i].height then
+          self.places[i]:click()
+          break
+      end
+    end
+end

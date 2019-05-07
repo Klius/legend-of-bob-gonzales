@@ -15,6 +15,7 @@ require "objects/mainMenuScreen"
 require "objects/settingsScreen"
 function love.load()
   cheat = ""
+  version = "0.0.1"
   state = gameStates.mainMenu
   game = Game()
   --play music
@@ -49,6 +50,7 @@ function love.draw()
     end
   --end
   love.graphics.print(cheat,0,0)
+  love.graphics.print("Versión "..version,500,460)
 end
 
 

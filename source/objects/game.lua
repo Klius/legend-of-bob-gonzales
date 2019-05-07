@@ -7,10 +7,51 @@ function Game:new()
     event = 2,
     place = 3,
   }
+  self.places = {
+    casa = Place()
+  }
+  self.timetable ={
+    casa = {
+      casa = 2,
+      estudio = 5,
+      badulaque = 8,
+      mendez = 12,
+      bocanord = 15
+    },
+    estudio = {
+      casa = 5,
+      estudio = 5,
+      badulaque = 8,
+      mendez = 12,
+      bocanord = 15
+    },
+    badulaque = {
+      casa = 5,
+      estudio = 5,
+      badulaque = 8,
+      mendez = 12,
+      bocanord = 15
+    },
+    mendez = {
+      casa = 5,
+      estudio = 5,
+      badulaque = 8,
+      mendez = 12,
+      bocanord = 15
+    },
+    bocanord = {
+      casa = 5,
+      estudio = 5,
+      badulaque = 8,
+      mendez = 12,
+      bocanord = 15
+    },
+  }
   self.currentState = self.states.place
-  self.place = Place()
+  self.place = self.places.casa
   self.flags = {
     ducha = false,
+    cafe = false
   }
 end
 function Game:draw()
@@ -32,8 +73,16 @@ function Game:update(dt)
 end
 function Game:checkMouseClick(x,y,button)
   if self.currentState == self.states.map then
-   -- self.map:update(dt)
+    self.map:checkMouseClick(x,y,button)
   elseif self.currentState == self.states.place then
     self.place:checkMouseClick(x,y,button)
   end
+end
+function Game:moveToPlace(place)
+  self:addTime(self.place.id,place)
+  self.place = self.places[place]
+  self.currentState = self.states.place
+end
+function Game:addTime(from,to)
+  game.clock:addSeconds(self.timetable[from][to]*60)
 end

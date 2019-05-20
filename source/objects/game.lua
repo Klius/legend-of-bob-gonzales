@@ -6,9 +6,13 @@ function Game:new()
     map = 1,
     event = 2,
     place = 3,
+    dialog = 4,
   }
   self.places = {
     casa = Place()
+  }
+  self.dialog ={
+    mama = DialogScene()
   }
   self.timetable ={
     casa = {
@@ -47,8 +51,9 @@ function Game:new()
       bocanord = 15
     },
   }
-  self.currentState = self.states.place
+  self.currentState = self.states.dialog
   self.place = self.places.casa
+  self.dialog = self.dialog.mama
   self.flags = {
     ducha = false,
     cafe = false
@@ -59,6 +64,8 @@ function Game:draw()
     self.map:draw()
   elseif self.currentState == self.states.place then
     self.place:draw()
+  elseif self.currentState == self.states.dialog then
+    self.dialog:draw()
   end
   love.graphics.print("CurrentState:"..self.currentState,0,460)
   self.clock:draw()
@@ -68,6 +75,8 @@ function Game:update(dt)
     self.map:update(dt)
   elseif self.currentState == self.states.place then
     self.place:update(dt)
+  elseif self.currentState == self.states.dialog then
+    self.dialog:update(dt)
   end
   self.clock:update(dt)
 end

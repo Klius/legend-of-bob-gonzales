@@ -35,13 +35,13 @@ mainMenuScreen.update = function (self,dt)
   end
 end
 mainMenuScreen.draw = function (self)
-  love.graphics.setColor(223/255,113/255,38/255,1)
+  setColor(223,113,38,255)
   love.graphics.rectangle("fill",0,0,love.graphics.getWidth(),love.graphics.getHeight())
-  love.graphics.setColor(1,1,1,1)
+  setColor(255,255,255,255)
   for k,v in ipairs(self.buttons) do
     v:draw()
   end
-  love.graphics.setColor(1,1,1,1)
+  setColor(255,255,255,255)
 end
 
 mainMenuScreen.changeOption = function(self, increment)

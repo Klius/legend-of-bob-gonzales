@@ -1,5 +1,6 @@
 --moonshine = require "libs/moonshine"
 Object = require "libs/classic"
+require "libs/util"
 require "objects/animations"
 require "objects/audio-engine"
 require "objects/gamestates"
@@ -13,6 +14,10 @@ require "objects/game"
 require "objects/audioControl"
 require "objects/mainMenuScreen"
 require "objects/settingsScreen"
+require "objects/response"
+require "objects/dialog"
+require "objects/dialogScene"
+
 function love.load()
   cheat = ""
   version = "0.0.1"
@@ -61,9 +66,9 @@ end
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ]]
 function drawMenuBackground()
-  love.graphics.setColor(223/255,113/255,38/255,1)
+  setColor(223,113,38,255)
   love.graphics.rectangle("fill",0,0,love.graphics.getWidth(),love.graphics.getHeight())
-  love.graphics.setColor(1,1,1,1)
+  setColor(255,255,255,255)
 end
 --[[
 @@@@@@@@@@@@@@@@@@@@@@@@@@

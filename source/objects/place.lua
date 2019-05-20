@@ -13,18 +13,23 @@ function Place:new()
   self.frameTime = 0.8
   self.name = name or "Casa"
   self.options={
-    [1] = Button(love.graphics.getWidth()/3-60,love.graphics.getHeight()/4*3,"Café",function() state=gameStates.gameLoop end),
+    [1] = Button(love.graphics.getWidth()/3-60,love.graphics.getHeight()/4*3,"Café",function() self.actions[1]() end),
     [2] = Button(love.graphics.getWidth()/3*2-60,love.graphics.getHeight()/4*3,"Ducha",function() self.actions[2]()  end),
     [3] = Button(love.graphics.getWidth()/2-60,love.graphics.getHeight()-love.graphics.getHeight()/8,"Salir",function() self.actions[3]() end),
   }
   self.actions = {
-      [1] ="",
-      [2] =function()
+      [1] =function()
         game.clock:addSeconds(60*5)
+        game.flags.cafe = true
+      end,
+      [2] =function()
+        game.clock:addSeconds(60*20)
         game.flags.ducha = true
       end,
       [3] = function()
-        game.currentState = game.states.map
+        if game.flags.ducha and game.flags then
+          game.currentState = game.states.map
+        end
       end,
   }
   self. message = "Que quieres hacer?"

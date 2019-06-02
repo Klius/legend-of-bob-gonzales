@@ -20,6 +20,7 @@ require "objects/dialogScene"
 
 function love.load()
   cheat = ""
+  normalFont = love.graphics.newFont(18)
   version = "0.0.1"
   state = gameStates.mainMenu
   game = Game()

@@ -2,13 +2,18 @@ Response = Object:extend()
 function Response:new(description,text,time,dialog,x,y)
   self.label = description or "VOID"
   self.text = text or "Respuesta generica de persona humana"
-  self.time = time or 5*60
+  self.time = time*60 or 5*60
   self.dialog = dialog or 1
   self.hover = false
   self.x = x or 40
   self.y = y or love.graphics.getHeight() - 100
   self.width = 100
-  self.height = math.ceil(love.graphics.getFont():getWidth(self.label) / self.width) * (love.graphics.getFont():getHeight()+love.graphics.getFont():getAscent()+love.graphics.getFont():getDescent() )
+  self.fontHeight = love.graphics.getFont():getHeight()+love.graphics.getFont():getAscent()+love.graphics.getFont():getDescent()
+  self.lineNumber = math.ceil(love.graphics.getFont():getWidth(self.label) / self.width)
+  if self.lineNumber <=1 then
+    self.lineNumber = self.lineNumber +1
+  end
+  self.height =  self.lineNumber* self.fontHeight
   self.hOffset = 6
 end
 

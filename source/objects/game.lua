@@ -85,6 +85,8 @@ function Game:checkMouseClick(x,y,button)
     self.map:checkMouseClick(x,y,button)
   elseif self.currentState == self.states.place then
     self.place:checkMouseClick(x,y,button)
+  elseif self.currentState == self.states.dialog then
+    self.dialog:checkMouseClick(x,y,button)
   end
 end
 function Game:moveToPlace(place)
